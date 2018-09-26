@@ -20,7 +20,11 @@ flyway {
     password = 'postgres'
 
     installedBy = 'nagase'
-    target='current'
+   // target='current'
+
+   //baselineコマンドを実行したときに適用するバージョンを指定。
+    baselineVersion = 0.3
+    baselineDescription = "ベースライン"
 
 
     //schemas = ['public']
@@ -32,9 +36,7 @@ flyway {
     //outOfOrder = true
     //cleanコマンドを実行不可にする。（実行時にこの値をfalseにすれば実行可能）
     //cleanDisabled = true
-    //baselineコマンドを実行したときに適用するバージョンを指定。
-    baselineVersion = 0.3
-    baselineDescription = "ベースライン"
+ 
     //Migratin実行時のターゲットバージョンを指定
     //target = 8
     //途中で過去のバージョンが追加されてもエラーにしない
