@@ -1,0 +1,44 @@
+buildscript {
+    dependencies {
+        classpath 'com.h2database:h2:1.4.191'
+        classpath 'org.postgresql:postgresql:9.4-1201-jdbc41'
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "5.1.1"
+    id "org.sonarqube" version "2.6.2"
+}
+
+
+
+flyway {
+    //これらの値は基本的にコマンド実行時に引数から渡すようにしてください。
+    //毎回引数を渡すのが面倒な場合はここに記述することで値が自動的に設定されるようになります。
+    url = 'jdbc:postgresql://172.31.228.23:15432/postgres?currentSchema=public'
+    user = 'postgres'
+    password = 'postgres'
+
+    installedBy = 'nagase'
+    target='current'
+
+
+    //schemas = ['public']
+    //実行するDDL全体を一つのトランザクション範囲とする
+    group=true
+    //DDLの格納ディレクトリを指定する。
+    locations=["filesystem:./src/main/resources/db/migration"]
+    //過去のバージョンが後から追加されてもかまわず実行する。
+    //outOfOrder = true
+    //cleanコマンドを実行不可にする。（実行時にこの値をfalseにすれば実行可能）
+    //cleanDisabled = true
+    //baselineコマンドを実行したときに適用するバージョンを指定。
+    baselineVersion = 0.3
+    baselineDescription = "ベースライン"
+    //Migratin実行時のターゲットバージョンを指定
+    //target = 8
+    //途中で過去のバージョンが追加されてもエラーにしない
+    //ignoreIgnoredMigrations=true
+}
+
+//gradle flywayInfo -Pflyway.baselineVersion=0.5 -Pflyway.url='jdbc:postgresql://172.31.228.23:15432/postgres?currentSchema=public' -Pflyway.user='posgtres' -Pflyway.password='postgres'

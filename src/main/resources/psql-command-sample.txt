@@ -1,0 +1,1 @@
+psql -h 172.31.228.23 -p 15432 -d postgres -U postgres -f src\main\resources\db\migration\V0_1_0__初期バージョン.sql
