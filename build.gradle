@@ -26,6 +26,9 @@ flyway {
     baselineVersion = 0.3
     baselineDescription = "ベースライン"
 
+    //検証用についか
+    ignoreMissingMigrations=true
+   // ignoreIgnoredMigrations=true
 
     //schemas = ['public']
     //実行するDDL全体を一つのトランザクション範囲とする
